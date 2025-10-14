@@ -37,11 +37,42 @@
     #projects {
       background: #fff;
     }
+    /* Style for each project card */
     #projects .project-card {
       border: 1px solid #e1e1e1;
       border-radius: 4px;
       padding: 1rem;
       margin-bottom: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Hover effect to lift cards */
+    #projects .project-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    /* Selected state to animate on click */
+    #projects .project-card.selected {
+      border-color: #007bff;
+      animation: bounce 0.4s;
+    }
+    /* Bounce animation for selected cards */
+    @keyframes bounce {
+      0%   { transform: translateY(0) scale(1); }
+      50%  { transform: translateY(-8px) scale(1.05); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    /* Hidden details section for each card */
+    .project-card .details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    /* Show details when selected */
+    .project-card.selected .details {
+      max-height: 500px; /* Large enough to reveal content */
     }
     #contact a {
       color: #007bff;
@@ -65,7 +96,8 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Welcome to my portfolio! I am a data scientist with experience in building data-intensive applications, predictive modeling, and machine learning algorithms. Here you'll find some of my projects and accomplishments.
+      Welcome to my portfolio! I am a data scientist with experience in building data-intensive applications,
+      predictive modeling, and machine learning algorithms. Here you'll find some of my projects and accomplishments.
     </p>
   </section>
 
@@ -75,11 +107,23 @@
     <div class="project-card">
       <h3>Project 1</h3>
       <p>Description of your project goes here. You can update this section with details about your project, technologies used, and key achievements.</p>
+      <div class="details">
+        <p>
+          Additional details about Project 1. Use this area to provide deeper insights, demo links, or any other information
+          you want to showcase when the card is selected.
+        </p>
+      </div>
     </div>
 
     <div class="project-card">
       <h3>Project 2</h3>
       <p>Description of your project goes here. You can update this section with details about your project, technologies used, and key achievements.</p>
+      <div class="details">
+        <p>
+          Additional details about Project 2. Use this area to provide deeper insights, demo links, or any other information
+          you want to showcase when the card is selected.
+        </p>
+      </div>
     </div>
 
     <!-- Add more project cards as needed -->
@@ -94,5 +138,24 @@
   <footer>
     <p>&copy; 2025 Deepanshu Surania. All rights reserved.</p>
   </footer>
+
+  <script>
+    // JavaScript to toggle selection state and animate projects
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          // Remove 'selected' from other cards
+          cards.forEach(c => {
+            if (c !== card) {
+              c.classList.remove('selected');
+            }
+          });
+          // Toggle selected state on clicked card
+          card.classList.toggle('selected');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
