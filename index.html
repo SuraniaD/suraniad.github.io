@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deepanshu Surania | Portfolio</title>
-  <meta name="description" content="Deepanshu Surania — Data Scientist & AI practitioner. Projects in credit risk, RAG, agentic workflows, and IoT." />
+  <meta name="description" content="Deepanshu Surania — Data Scientist & Risk Analytics. Projects in credit risk, RAG, agentic workflows, and IoT." />
   <style>
     /* ----------------------  Base / Theme  ---------------------- */
     :root {
@@ -56,18 +56,19 @@
     section { padding: 56px 0; scroll-margin-top: 76px; }
     .tight { padding: 40px 0; }
 
-    /* Hero: compact, with soft parallax dots */
-    #hero { min-height: 62vh; display: grid; place-items: center; text-align: left; position: relative; }
-    .hero-inner { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: center; }
-    .title { font-size: clamp(28px, 4vw, 56px); line-height: 1.05; font-weight: 900; margin: 0 0 10px; }
+    /* Hero: larger, with name emphasized */
+    #hero { min-height: 86vh; display: grid; place-items: center; text-align: left; position: relative; }
+    .hero-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 32px; align-items: center; }
+    .name { font-size: clamp(40px, 6vw, 84px); line-height: 1.02; font-weight: 900; margin: 0 0 6px; letter-spacing: .3px; }
+    .title { font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: #d6e3ff; margin: 0 0 10px; }
     .subtitle { font-size: clamp(15px, 2vw, 18px); color: var(--muted); margin: 0 0 18px; }
     .cta-row { display:flex; gap: 10px; flex-wrap: wrap; }
     .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06);
                  border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
 
     /* Decorative floating blobs */
-    .blob, .blob2 { position: absolute; inset: auto auto 10% 60%; width: 280px; height: 280px; filter: blur(40px); opacity:.25; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--brand), transparent 60%); animation: float 12s ease-in-out infinite; }
-    .blob2 { left: 10%; bottom: 20%; width: 220px; height: 220px; background: radial-gradient(circle at 30% 30%, var(--brand-2), transparent 60%); animation-duration: 16s; }
+    .blob, .blob2 { position: absolute; inset: auto auto 10% 60%; width: 320px; height: 320px; filter: blur(42px); opacity:.25; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--brand), transparent 60%); animation: float 12s ease-in-out infinite; }
+    .blob2 { left: 10%; bottom: 20%; width: 260px; height: 260px; background: radial-gradient(circle at 30% 30%, var(--brand-2), transparent 60%); animation-duration: 16s; }
     @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
 
     /* ----------------------  Projects  ---------------------- */
@@ -94,9 +95,10 @@
     /* ----------------------  Education & Career  ---------------------- */
     #education h2 { margin: 0 0 16px; font-size: clamp(22px, 2.2vw, 30px); text-align: center; }
     .edu-career-grid { display: grid; gap: 16px; }
-    @media (min-width: 780px){ .edu-career-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 880px){ .edu-career-grid { grid-template-columns: 1fr 1fr; } }
     .item { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; }
     .item h3 { margin: 0 0 8px; }
+    .bullets{ margin: 8px 0 0 18px; }
 
     /* ----------------------  Contact  ---------------------- */
     #contact { background: var(--panel-2); }
@@ -139,7 +141,8 @@
       <span class="blob2" aria-hidden="true"></span>
       <div class="hero-inner">
         <div class="reveal">
-          <h1 class="title">Data Scientist & AI Builder</h1>
+          <h1 class="name">Deepanshu Surania</h1>
+          <div class="title">Data Scientist | Risk Analytics & Modeling | Sustainable Solutions</div>
           <p class="subtitle">I design and ship pragmatic AI/analytics products — credit risk, agentic automations, and doc‑QA/RAG systems — end to end.</p>
           <div class="cta-row">
             <a class="btn primary" href="#projects">View Work</a>
@@ -149,8 +152,8 @@
         <div class="hero-card reveal">
           <strong>Snapshot</strong>
           <ul style="margin:8px 0 0 18px; padding:0">
-            <li>IFRS‑9 / Credit Risk modelling</li>
-            <li>Agentic workflows (LangGraph) & RAG</li>
+            <li>Senior Risk Analyst @ Société Générale (Mar 2024–Present)</li>
+            <li>IFRS‑9 / Credit Risk • Agentic AI • RAG</li>
             <li>FastAPI • Postgres/Supabase • Appsmith</li>
           </ul>
         </div>
@@ -197,23 +200,40 @@
         <div class="reveal">
           <h2>About Me</h2>
           <p>Hello! I'm Deepanshu, a data scientist who turns raw data into shipped products. I enjoy the full cycle — scoping, modelling, APIs, and just‑enough UX — to land impact fast.</p>
+          <p style="margin-top:10px;color:#b8c1d4">
+            <strong>Skills:</strong> Python, SQL, Machine Learning, Statistical Analysis, Power BI, Excel, Git, Linux, MySQL, Analytical Problem‑Solving, Presentations.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Education & Career -->
     <section id="education" class="wrap">
-      <h2 class="reveal">Education & Career</h2>
+      <h2 class="reveal">Experience & Education</h2>
       <div class="edu-career-grid">
         <div class="item reveal">
-          <h3>Education</h3>
-          <p>Bachelor's in Computer Science, University Name (2015‑2019)</p>
-          <p>Master's in Data Science, University Name (2019‑2021)</p>
+          <h3>Experience</h3>
+          <ul class="bullets">
+            <li><strong>Société Générale</strong> — Senior Risk Analyst (Mar 2024 – Present)</li>
+            <li><strong>Société Générale</strong> — Risk Analyst (Nov 2022 – Mar 2024)</li>
+            <li><strong>Tiger Analytics</strong> — Data Analyst (Jul 2022 – Nov 2022), Chennai</li>
+            <li><strong>VisiConsult – X‑ray Systems & Solutions GmbH</strong> — Project Intern (Jun 2021 – Jul 2022)</li>
+            <li><strong>Henry Harvin</strong> — Data Analyst Intern (Jul 2021 – Aug 2021)</li>
+            <li><strong>Team Kraftwagen</strong> — Captain (Feb 2017 – Mar 2018); Manufacturing Engineer (Feb 2016 – Feb 2017)
+              <br/>Achievements: 2nd (Suspension & Traction), 3rd (Endurance), 5th Overall AIR
+            </li>
+          </ul>
         </div>
         <div class="item reveal">
-          <h3>Career</h3>
-          <p>Data Scientist at Company Name (2021‑Present)</p>
-          <p>Machine Learning Engineer at Previous Company (2019‑2021)</p>
+          <h3>Education</h3>
+          <ul class="bullets">
+            <li><strong>National Institute of Technology, Tiruchirappalli</strong> — M.Tech, Mechanical Engineering (2020–2022)
+              <br/>Grade: 9.3 • Rank holder & Best Outgoing Student • Research: Imaging for Industrial Grade Radiology
+            </li>
+            <li><strong>Savitribai Phule Pune University</strong> — B.E., Mechanical Engineering (2014–2018)
+              <br/>First Division
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -223,8 +243,8 @@
       <div class="wrap">
         <h2 class="reveal">Contact</h2>
         <div class="contact-info reveal">
-          <p>Email: <a class="link" href="mailto:youremail@example.com">youremail@example.com</a></p>
-          <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+          <p>Email: <a class="link" href="mailto:deepanshu.surania@gmail.com">deepanshu.surania@gmail.com</a></p>
+          <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/deepanshu-s-7b53a1110" target="_blank" rel="noreferrer">linkedin.com/in/deepanshu-s-7b53a1110</a></p>
         </div>
       </div>
     </section>
