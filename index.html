@@ -36,42 +36,36 @@
     .btn:hover { border-color: rgba(255,255,255,0.3); box-shadow: var(--shadow); }
     .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #000; font-weight: 600; }
 
-    section { scroll-margin-top: 70px; position: relative; overflow: hidden; }
-
-    /* Unified gradient background per section */
+    /* Sections are full-width with unified per-section gradients */
+    section { scroll-margin-top: 70px; position: relative; overflow: hidden; padding: 56px 0; }
     section:nth-of-type(odd) { background: linear-gradient(180deg, var(--bg1), var(--bg2)); }
     section:nth-of-type(even) { background: linear-gradient(180deg, var(--bg2), var(--bg3)); }
 
     /* Hero */
-    #hero { min-height: 95vh; display: flex; align-items: center; justify-content: center; text-align: left; }
+    #hero { min-height: 95vh; display: flex; align-items: center; }
     .hero-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 32px; }
     .name { font-size: clamp(50px, 7vw, 96px); font-weight: 900; margin: 0; }
     .title { font-size: 22px; color: #cbd5e1; margin: 10px 0; }
     .subtitle { color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
-
     .hero-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
-
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    /* Sections */
+    /* Headings & layouts */
     h2.section-title { text-align: left; font-size: clamp(24px, 2.2vw, 32px); margin-bottom: 20px; }
     p.lead { color: var(--muted); margin-bottom: 20px; }
-
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
     .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 16px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-
     .twocol { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
     ul.bullets { margin: 10px 0 0 20px; color: #cbd5e1; }
 
-    #contact { text-align: center; }
-    .contact-info { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
+    #contact .contact-info { display: flex; flex-direction: column; align-items: center; gap: 10px; }
     footer { text-align: center; background: var(--bg3); padding: 20px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.1); }
 
-    /* Reveal animation */
-    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Reveal: visible by default; JS enhances with animation (so nothing is hidden if JS fails) */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s ease; }
+    .js .reveal { opacity: 0; transform: translateY(20px); }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -88,12 +82,13 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section id="hero">
       <div class="wrap hero-inner">
         <div class="reveal">
           <h1 class="name">Deepanshu Surania</h1>
           <p class="title">AI Engineer & Data Scientist</p>
-          <p class="subtitle">Building agentic systems that automate reasoning and decision-making using LLMs, APIs, and ML to bridge human-machine collaboration.</p>
+          <p class="subtitle">Building agentic systems that automate reasoning and decision-making using LLMs, APIs, and ML to bridge human–machine collaboration.</p>
           <div class="cta-row">
             <a href="#projects" class="btn primary">View Work</a>
             <a href="#contact" class="btn">Get in Touch</a>
@@ -109,87 +104,135 @@
       </div>
     </section>
 
-    <section id="projects" class="wrap">
-      <h2 class="section-title reveal">Selected Projects</h2>
-      <div class="cards">
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="wrap">
+        <h2 class="section-title reveal">Selected Projects</h2>
+        <div class="cards">
 
-        <!-- Repo-backed projects -->
-        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/Groq_search_engine_streamlit">
-          <h3>Groq Search Engine — Streamlit</h3>
-          <p>Fast semantic search UI powered by the <strong>Groq</strong> API (Llama-3 family). Streamlit app that orchestrates queries and explains results with concise, grounded answers.</p>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn primary open-demo" href="#">Launch Demo</a>
-            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/Groq_search_engine_streamlit">View Code</a>
-          </div>
-        </article>
+          <!-- Repo-backed projects -->
+          <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/Groq_search_engine_streamlit">
+            <h3>Groq Search Engine — Streamlit</h3>
+            <p>Fast semantic search UI powered by the <strong>Groq</strong> API (Llama-3 family). Streamlit app that orchestrates queries and explains results with concise, grounded answers.</p>
+            <div class="cta-row" style="margin-top:10px">
+              <a class="btn primary open-demo" href="#">Launch Demo</a>
+              <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/Groq_search_engine_streamlit">View Code</a>
+            </div>
+          </article>
 
-        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/RAG_Ollama_API">
-          <h3>RAG API — Ollama backend</h3>
-          <p>Retrieval-Augmented Generation service exposing endpoints for ingest, embed, and query using <strong>Ollama</strong>-hosted models.</p>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn primary open-demo" href="#">Launch Demo</a>
-            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/RAG_Ollama_API">View Code</a>
-          </div>
-        </article>
+          <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/RAG_Ollama_API">
+            <h3>RAG API — Ollama backend</h3>
+            <p>Retrieval-Augmented Generation service exposing endpoints for ingest, embed, and query using <strong>Ollama</strong>-hosted models.</p>
+            <div class="cta-row" style="margin-top:10px">
+              <a class="btn primary open-demo" href="#">Launch Demo</a>
+              <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/RAG_Ollama_API">View Code</a>
+            </div>
+          </article>
 
-        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/ollama_streamlit_app">
-          <h3>Ollama Chat — Streamlit App</h3>
-          <p>Local LLM chat interface with model picker and session history, running fully on-device via <strong>Ollama</strong>.</p>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn primary open-demo" href="#">Launch Demo</a>
-            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/ollama_streamlit_app">View Code</a>
-          </div>
-        </article>
+          <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/ollama_streamlit_app">
+            <h3>Ollama Chat — Streamlit App</h3>
+            <p>Local LLM chat interface with model picker and session history, running fully on-device via <strong>Ollama</strong>.</p>
+            <div class="cta-row" style="margin-top:10px">
+              <a class="btn primary open-demo" href="#">Launch Demo</a>
+              <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/ollama_streamlit_app">View Code</a>
+            </div>
+          </article>
 
-      </div>
-    </section>
+          <!-- Extra showcase (non-repo) -->
+          <article class="card reveal">
+            <h3>Agentic AI Prototype</h3>
+            <p>Autonomous document search, reasoning, and summarization using LangChain + LangGraph + Streamlit.</p>
+          </article>
+          <article class="card reveal">
+            <h3>RAG Doc Briefs (200-page → 1-pager)</h3>
+            <p>Section-aware embeddings + contextual retrieval to generate concise one-pagers from large technical documents.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Immigration Eligibility Engine</h3>
+            <p>Policy-parsing system that evaluates international student eligibility and suggests high-conversion pathways.</p>
+          </article>
+          <article class="card reveal">
+            <h3>GenAI Cost Forecasting Tool</h3>
+            <p>Models infra + operational spend for GenAI startups; simulates costs under different usage scenarios.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Business Data Analyst – Customer Analytics</h3>
+            <p>Modeled customer value uplift; defined KPIs and tracking for growth.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Health Vault — Medical Records Management</h3>
+            <p>Privacy-first platform to store, extract, and share medical documents using FastAPI, Google Drive API, and Appsmith.</p>
+          </article>
 
-    <section id="experience" class="wrap">
-      <h2 class="section-title reveal">Experience & Education</h2>
-      <div class="twocol">
-        <div class="reveal">
-          <h3>Experience</h3>
-          <ul class="bullets">
-            <li><strong>Société Générale, Bangalore — Senior Risk Analyst</strong> (Nov 2022 – Present)
-              <ul class="bullets">
-                <li>Automated model monitoring & governance (migrated from manual R scripts) → <em>~85% efficiency gain</em>.</li>
-                <li>Integrated ML explainability & compliance within IFRS-9 modeling ecosystem.</li>
-                <li>Built RAG assistant POC to ingest/query 200+ page documents and produce concise, section-specific one-pagers.</li>
-                <li>Collaborated with global AI teams on Python-based credit risk models on cloud-native stacks.</li>
-              </ul>
-            </li>
-            <li><strong>Tiger Analytics, Chennai — Data Analyst</strong> (Jul 2022 – Nov 2022)</li>
-            <li><strong>VisiConsult GmbH, Germany — Project Intern</strong> (Jul 2021 – Jun 2022)</li>
-            <li><strong>Henry Harvin — Data Analyst Intern</strong> (Jul 2021 – Aug 2021)</li>
-            <li><strong>Team Kraftwagen</strong> — Captain & Engineer</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <h3>Education & Awards</h3>
-          <ul class="bullets">
-            <li><strong>NIT Tiruchirappalli</strong> — M.Tech (CGPA: 9.3)</li>
-            <li><strong>Pune University</strong> — B.Tech (CGPA: 7.05)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="wrap">
-      <h2 class="section-title reveal">Skills</h2>
-      <div class="twocol">
-        <div class="reveal">
-          <h4>AI & GenAI</h4>
-          <ul class="bullets"><li>LangChain, LangGraph, Groq, LLM Fine-tuning</li></ul>
-          <h4>Machine Learning</h4>
-          <ul class="bullets"><li>scikit-learn, TensorFlow, NLP, Forecasting</li></ul>
-        </div>
-        <div class="reveal">
-          <h4>Data & Systems</h4>
-          <ul class="bullets"><li>Python, SQL, Power BI, FastAPI, Supabase, GCP, Docker</li></ul>
         </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience">
+      <div class="wrap">
+        <h2 class="section-title reveal">Experience & Education</h2>
+        <div class="twocol">
+          <div class="reveal">
+            <h3>Experience</h3>
+            <ul class="bullets">
+              <li><strong>Société Générale, Bangalore — Senior Risk Analyst</strong> (Nov 2022 – Present)
+                <ul class="bullets">
+                  <li>Automated model monitoring & governance (migrated from manual R scripts) → <em>~85% efficiency gain</em>.</li>
+                  <li>Integrated ML explainability & compliance within IFRS-9 modeling ecosystem.</li>
+                  <li>Built RAG assistant POC to ingest/query 200+ page documents and produce concise, section-specific one-pagers.</li>
+                  <li>Collaborated with global AI teams on Python-based credit risk models on cloud-native stacks.</li>
+                </ul>
+              </li>
+              <li><strong>Tiger Analytics, Chennai — Data Analyst</strong> (Jul 2022 – Nov 2022)</li>
+              <li><strong>VisiConsult GmbH, Germany — Project Intern</strong> (Jul 2021 – Jun 2022)</li>
+              <li><strong>Henry Harvin — Data Analyst Intern</strong> (Jul 2021 – Aug 2021)</li>
+              <li><strong>Team Kraftwagen</strong> — Captain & Engineer</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3>Education & Awards</h3>
+            <ul class="bullets">
+              <li><strong>NIT Tiruchirappalli — M.Tech, Mechanical Engineering</strong> (2020–2022)
+                <br/>CGPA: 9.30 • Rank holder & Best Outgoing Student • Research: Imaging for Industrial Grade Radiology
+              </li>
+              <li><strong>Savitribai Phule Pune University — B.E., Mechanical Engineering</strong> (2014–2018)
+                <br/>CGPA: 7.05 • First Division
+              </li>
+            </ul>
+            <div style="height:14px"></div>
+            <h3>Awards & Recognition</h3>
+            <ul class="bullets">
+              <li>Best Outgoing MTech Student — NIT Trichy</li>
+              <li>Featured in Times of India – Pune Times (BAJA SAE INDIA 2018)</li>
+              <li>2nd Position — BAJA SAE INDIA 2018</li>
+              <li>Represented India — BAJA SAE Illinois, USA 2017</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="section-title reveal">Skills</h2>
+        <div class="twocol">
+          <div class="reveal">
+            <h4>AI & GenAI</h4>
+            <ul class="bullets"><li>OpenAI API, LangChain, LangGraph, Groq, Agentic workflows</li><li>LLM fine-tuning, prompt engineering</li></ul>
+            <h4>Machine Learning</h4>
+            <ul class="bullets"><li>scikit-learn, TensorFlow, NLP, time-series forecasting</li><li>Model evaluation & monitoring</li></ul>
+          </div>
+          <div class="reveal">
+            <h4>Data & Systems</h4>
+            <ul class="bullets"><li>Python, SQL, Power BI, Tableau, data pipelines, predictive modeling</li><li>FastAPI, Docker, Streamlit, Appsmith, Supabase, GCP, REST APIs</li><li>Git, automation, cloud integration</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact">
       <div class="wrap">
         <h2 class="section-title reveal">Contact</h2>
@@ -209,13 +252,16 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Mark JS-enabled (so CSS can animate; content is visible by default)
+    document.documentElement.classList.add('js');
+
     // Reveal-on-scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, {threshold: 0.1});
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Demo launcher
+    // Demo launcher (set data-demo to your Streamlit URL)
     document.querySelectorAll('.open-demo').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
