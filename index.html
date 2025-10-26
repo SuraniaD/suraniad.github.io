@@ -6,120 +6,75 @@
   <title>Deepanshu Surania | Portfolio</title>
   <meta name="description" content="Deepanshu Surania — AI Engineer & Data Scientist focused on agentic systems, credit risk, and pragmatic AI products." />
   <style>
-    /* ----------------------  Base / Theme  ---------------------- */
     :root {
-      --bg: #0b0f17;
+      --bg1: #0a0d14;
+      --bg2: #0c111d;
+      --bg3: #0f172a;
       --panel: #111827;
-      --panel-2: #0f172a;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --brand: #7dd3fc;   /* sky-300 */
-      --brand-2: #a78bfa; /* violet-400 */
-      --ring: 0 0 0 8px rgba(125, 211, 252, 0.12);
+      --brand: #7dd3fc;
+      --brand-2: #a78bfa;
       --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
       --maxw: 1120px;
     }
+
     * { box-sizing: border-box; }
-    html, body { height: 100%; scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(99,102,241,.16), transparent 60%),
-                  radial-gradient(900px 700px at -10% 10%, rgba(14,165,233,.16), transparent 60%),
-                  var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    html, body { margin: 0; padding: 0; font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--bg1); }
+    body { overflow-x: hidden; scroll-behavior: smooth; }
+
     a { color: inherit; text-decoration: none; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
 
-    /* ----------------------  Header  ---------------------- */
-    header { position: sticky; top: 0; z-index: 50; }
-    .nav {
-      display: grid; grid-template-columns: 1fr auto; align-items: center;
-      height: 64px; padding: 0 12px;
-      backdrop-filter: blur(10px) saturate(160%);
-      background: color-mix(in oklab, #0b0f17 80%, #111827 20% / 60%);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px) saturate(160%); background: rgba(11,13,17,0.8); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
     .logo { font-weight: 800; letter-spacing: .5px; }
     .links { display: flex; gap: 10px; }
-    .btn { display: inline-flex; align-items: center; gap:.5rem; padding:.6rem .95rem; border-radius: 12px;
-           background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08);
-           transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.2); box-shadow: var(--shadow); }
-    .btn.primary{ background: linear-gradient(180deg, rgba(125,211,252,.25), rgba(125,211,252,.06)); border-color: rgba(125,211,252,.35); }
 
-    /* ----------------------  Sections  ---------------------- */
-    section { padding: 56px 0; scroll-margin-top: 76px; }
-    .tight { padding: 40px 0; }
+    .btn { display: inline-flex; align-items: center; padding: .6rem .95rem; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); transition: all .3s ease; }
+    .btn:hover { border-color: rgba(255,255,255,0.3); box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #000; font-weight: 600; }
 
-    /* Hero: larger, with name emphasized */
-    #hero { min-height: 92vh; display: grid; place-items: center; text-align: left; position: relative; }
-    .hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 32px; align-items: center; }
-    .name { font-size: clamp(48px, 7vw, 96px); line-height: 1.02; font-weight: 900; margin: 0 0 6px; letter-spacing: .3px; }
-    .title { font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: #d6e3ff; margin: 0 0 10px; }
-    .subtitle { font-size: clamp(15px, 2vw, 18px); color: var(--muted); margin: 0 0 18px; }
-    .cta-row { display:flex; gap: 10px; flex-wrap: wrap; }
-    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06);
-                 border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
+    section { scroll-margin-top: 70px; position: relative; overflow: hidden; }
 
-    /* Decorative floating blobs */
-    .blob, .blob2 { position: absolute; inset: auto auto 10% 60%; width: 360px; height: 360px; filter: blur(45px); opacity:.25; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--brand), transparent 60%); animation: float 12s ease-in-out infinite; }
-    .blob2 { left: 8%; bottom: 18%; width: 300px; height: 300px; background: radial-gradient(circle at 30% 30%, var(--brand-2), transparent 60%); animation-duration: 16s; }
-    @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+    /* Unified gradient background per section */
+    section:nth-of-type(odd) { background: linear-gradient(180deg, var(--bg1), var(--bg2)); }
+    section:nth-of-type(even) { background: linear-gradient(180deg, var(--bg2), var(--bg3)); }
 
-    /* Section headings */
-    h2.section-title { font-size: clamp(22px, 2.2vw, 30px); margin: 0 0 10px; }
-    p.lead { color: var(--muted); margin: 0 0 22px; }
+    /* Hero */
+    #hero { min-height: 95vh; display: flex; align-items: center; justify-content: center; text-align: left; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 32px; }
+    .name { font-size: clamp(50px, 7vw, 96px); font-weight: 900; margin: 0; }
+    .title { font-size: 22px; color: #cbd5e1; margin: 10px 0; }
+    .subtitle { color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
 
-    /* Cards / grids */
-    .cards { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    @media (min-width: 720px){ .cards { grid-template-columns: repeat(3, 1fr); } }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08);
-            border-radius: var(--radius); padding: 14px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s; cursor: pointer; position: relative; overflow: clip; }
-    .card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.22); box-shadow: var(--shadow); }
-    .card h3 { margin: 6px 0 6px; font-size: 18px; }
-    .card p { color: #cfd7e3; margin: 0 0 10px; }
+    .hero-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
 
-    .details { grid-template-rows: 0fr; display: grid; transition: grid-template-rows .35s ease; }
-    .details > div { overflow: hidden; color: #9CA3AF; font-size: .95rem; }
-    .card.active .details { grid-template-rows: 1fr; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    /* Two-column blocks */
-    .twocol { display: grid; gap: 16px; }
-    @media (min-width: 880px){ .twocol { grid-template-columns: 1fr 1fr; } }
+    /* Sections */
+    h2.section-title { text-align: left; font-size: clamp(24px, 2.2vw, 32px); margin-bottom: 20px; }
+    p.lead { color: var(--muted); margin-bottom: 20px; }
 
-    /* Pills */
-    .pill{ display:inline-block; font-size:12px; color:#0b1220; background:linear-gradient(180deg, var(--brand), var(--brand-2)); padding:6px 10px; border-radius:999px; font-weight:700 }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+    .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 16px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
 
-    /* Lists */
-    ul.bullets{ margin:8px 0 0 18px }
+    .twocol { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    ul.bullets { margin: 10px 0 0 20px; color: #cbd5e1; }
 
-    /* Contact */
-    #contact { background: var(--panel-2); }
-    .contact-info { display: grid; gap: 10px; justify-items: center; font-size: 1.05rem; }
-    .link { color: var(--brand); border-bottom: 1px dashed transparent; transition: border-color .2s; }
-    .link:hover { border-color: var(--brand); }
+    #contact { text-align: center; }
+    .contact-info { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
-    /* Footer */
-    footer { background: #0B1220; color: #cdd6e4; text-align: center; padding: 18px 12px; }
+    footer { text-align: center; background: var(--bg3); padding: 20px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.1); }
 
-    /* Reveal animations */
-    .reveal { opacity: 0; transform: translateY(16px) scale(.98); filter: saturate(.6);
-              transition: opacity .6s ease, transform .6s ease, filter .6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); filter: saturate(1); }
-
-    @media (prefers-reduced-motion: reduce){
-      * { animation: none !important; transition: none !important; }
-      html, body { scroll-behavior: auto; }
-    }
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="nav wrap">
       <a class="logo" href="#top">Deepanshu Surania</a>
@@ -127,196 +82,121 @@
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#experience">Experience</a>
         <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section id="hero" class="wrap">
-      <span class="blob" aria-hidden="true"></span>
-      <span class="blob2" aria-hidden="true"></span>
-      <div class="hero-inner">
+  <main>
+    <section id="hero">
+      <div class="wrap hero-inner">
         <div class="reveal">
           <h1 class="name">Deepanshu Surania</h1>
-          <div class="title">AI Engineer & Data Scientist</div>
-          <p class="subtitle">I build intelligent, agentic systems that automate reasoning and decision‑making. I integrate LLMs, APIs, and ML to ship scalable AI solutions and tools that bridge human–machine collaboration.</p>
+          <p class="title">AI Engineer & Data Scientist</p>
+          <p class="subtitle">Building agentic systems that automate reasoning and decision-making using LLMs, APIs, and ML to bridge human-machine collaboration.</p>
           <div class="cta-row">
-            <a class="btn primary" href="#projects">View Work</a>
-            <a class="btn" href="#contact">Get in touch</a>
+            <a href="#projects" class="btn primary">View Work</a>
+            <a href="#contact" class="btn">Get in Touch</a>
           </div>
         </div>
         <div class="hero-card reveal">
           <strong>Snapshot</strong>
-          <ul style="margin:8px 0 0 18px; padding:0">
-            <li>Senior Risk Analyst @ Société Générale (Nov 2022–Present)</li>
-            <li>IFRS‑9 | Agentic AI | RAG | Credit Risk</li>
-            <li>FastAPI • Supabase • Streamlit/Appsmith • Docker • GCP</li>
+          <ul class="bullets">
+            <li>Senior Risk Analyst @ Société Générale</li>
+            <li>AI | RAG | Risk Modeling | FastAPI | Supabase | Docker | GCP</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" class="wrap">
       <h2 class="section-title reveal">Selected Projects</h2>
-      <p class="lead reveal">Compact cards with tap‑to‑expand details. Animates in as you scroll.</p>
-      <div class="cards" id="cards">
-        <article class="card reveal">
-          <h3>Agentic AI Prototype</h3>
-          <p>Autonomous document search, reasoning, and summarization using LangChain + LangGraph + Streamlit.</p>
-          <div class="details"><div>
-            Built to showcase enterprise knowledge assistants: multi‑tool orchestration, retrieval‑augmented planning, and traceable outputs.
-          </div></div>
+      <div class="cards">
+
+        <!-- Repo-backed projects -->
+        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/Groq_search_engine_streamlit">
+          <h3>Groq Search Engine — Streamlit</h3>
+          <p>Fast semantic search UI powered by the <strong>Groq</strong> API (Llama-3 family). Streamlit app that orchestrates queries and explains results with concise, grounded answers.</p>
+          <div class="cta-row" style="margin-top:10px">
+            <a class="btn primary open-demo" href="#">Launch Demo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/Groq_search_engine_streamlit">View Code</a>
+          </div>
         </article>
-        <article class="card reveal">
-          <h3>200‑Page → 1‑Pager (RAG Doc Briefs)</h3>
-          <p>Section‑aware embeddings + contextual retrieval to generate concise one‑pagers from large technical documents.</p>
-          <div class="details"><div>
-            Vector DB (FAISS), prompt routing by section, PDF/Markdown export, and guardrails for source‑citations.
-          </div></div>
+
+        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/RAG_Ollama_API">
+          <h3>RAG API — Ollama backend</h3>
+          <p>Retrieval-Augmented Generation service exposing endpoints for ingest, embed, and query using <strong>Ollama</strong>-hosted models.</p>
+          <div class="cta-row" style="margin-top:10px">
+            <a class="btn primary open-demo" href="#">Launch Demo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/RAG_Ollama_API">View Code</a>
+          </div>
         </article>
-        <article class="card reveal">
-          <h3>Immigration Eligibility Engine</h3>
-          <p>Policy‑parsing system that evaluates international student eligibility across visa streams and suggests high‑conversion pathways.</p>
-          <div class="details"><div>
-            Data normalization, rules engine, and scenario simulation UI.
-          </div></div>
+
+        <article class="card reveal" data-demo="#" data-github="https://github.com/SuraniaD/ollama_streamlit_app">
+          <h3>Ollama Chat — Streamlit App</h3>
+          <p>Local LLM chat interface with model picker and session history, running fully on-device via <strong>Ollama</strong>.</p>
+          <div class="cta-row" style="margin-top:10px">
+            <a class="btn primary open-demo" href="#">Launch Demo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/SuraniaD/ollama_streamlit_app">View Code</a>
+          </div>
         </article>
-        <article class="card reveal">
-          <h3>Cost Forecasting Tool for GenAI</h3>
-          <p>Models infra + operational spend for GenAI startups; simulates costs under different usage scenarios.</p>
-          <div class="details"><div>
-            Built a simple planner UI to compare provider tiers, token usage, and traffic assumptions.
-          </div></div>
-        </article>
-        <article class="card reveal">
-          <h3>Business Data Analyst – Customer Analytics</h3>
-          <p>Modeled customer value uplift post optimization recommendations; defined KPIs and tracking for growth.</p>
-          <div class="details"><div>
-            EDA, cohort analyses, and instrumentation for ongoing measurement.
-          </div></div>
-        </article>
-        <article class="card reveal">
-          <h3>Health Vault — Medical Records Management</h3>
-          <p>Privacy‑first platform to store, extract, and share medical documents using FastAPI, Google Drive API, and Appsmith.</p>
-          <div class="details"><div>
-            Includes custom GPT integration for summarizing and organizing records; signed URLs for secure previews.
-          </div></div>
-        </article>
+
       </div>
     </section>
 
-    <!-- Experience & Education -->
     <section id="experience" class="wrap">
       <h2 class="section-title reveal">Experience & Education</h2>
       <div class="twocol">
         <div class="reveal">
-          <div class="pill">Experience</div>
+          <h3>Experience</h3>
           <ul class="bullets">
             <li><strong>Société Générale, Bangalore — Senior Risk Analyst</strong> (Nov 2022 – Present)
               <ul class="bullets">
                 <li>Automated model monitoring & governance (migrated from manual R scripts) → <em>~85% efficiency gain</em>.</li>
-                <li>Integrated ML explainability & compliance within IFRS‑9 modeling ecosystem.</li>
-                <li>Built RAG assistant POC to ingest/query 200+ page documents and produce concise, section‑specific one‑pagers.</li>
-                <li>Collaborated with global AI teams on Python‑based credit risk models on cloud‑native stacks.</li>
+                <li>Integrated ML explainability & compliance within IFRS-9 modeling ecosystem.</li>
+                <li>Built RAG assistant POC to ingest/query 200+ page documents and produce concise, section-specific one-pagers.</li>
+                <li>Collaborated with global AI teams on Python-based credit risk models on cloud-native stacks.</li>
               </ul>
             </li>
-            <li><strong>Tiger Analytics, Chennai — Data Analyst</strong> (Jul 2022 – Nov 2022)
-              <ul class="bullets">
-                <li>EDA and predictive modeling to support strategic decisions; delivered measurable business recommendations.</li>
-              </ul>
-            </li>
-            <li><strong>VisiConsult GmbH, Germany — Project Intern</strong> (Jul 2021 – Jun 2022)
-              <ul class="bullets">
-                <li>Research & system design for industrial‑grade digital radiography; thesis on defect detection via image processing.</li>
-              </ul>
-            </li>
+            <li><strong>Tiger Analytics, Chennai — Data Analyst</strong> (Jul 2022 – Nov 2022)</li>
+            <li><strong>VisiConsult GmbH, Germany — Project Intern</strong> (Jul 2021 – Jun 2022)</li>
             <li><strong>Henry Harvin — Data Analyst Intern</strong> (Jul 2021 – Aug 2021)</li>
-            <li><strong>Team Kraftwagen</strong> — Captain (Feb 2017 – Mar 2018); Manufacturing Engineer (Feb 2016 – Feb 2017)
-              <ul class="bullets">
-                <li>Led 30+ member ATV team; improved manufacturing tolerances & PM practices.</li>
-                <li>Achievements: 2nd (Suspension & Traction), 3rd (Endurance), 5th Overall AIR.</li>
-              </ul>
-            </li>
+            <li><strong>Team Kraftwagen</strong> — Captain & Engineer</li>
           </ul>
         </div>
         <div class="reveal">
-          <div class="pill">Education</div>
+          <h3>Education & Awards</h3>
           <ul class="bullets">
-            <li><strong>NIT Tiruchirappalli — M.Tech, Mechanical Engineering</strong> (2020–2022)
-              <br/>CGPA: 9.30 • Rank holder & Best Outgoing Student • Research: Imaging for Industrial Grade Radiology
-            </li>
-            <li><strong>Savitribai Phule Pune University — B.E., Mechanical Engineering</strong> (2014–2018)
-              <br/>CGPA: 7.05 • First Division
-            </li>
-          </ul>
-          <div style="height:14px"></div>
-          <div class="pill">Awards & Recognition</div>
-          <ul class="bullets">
-            <li>Best Outgoing MTech Student — NIT Trichy</li>
-            <li>Featured in Times of India – Pune Times (BAJA SAE INDIA 2018)</li>
-            <li>2nd Position — BAJA SAE INDIA 2018</li>
-            <li>Represented India — BAJA SAE Illinois, USA 2017</li>
+            <li><strong>NIT Tiruchirappalli</strong> — M.Tech (CGPA: 9.3)</li>
+            <li><strong>Pune University</strong> — B.Tech (CGPA: 7.05)</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills" class="wrap">
       <h2 class="section-title reveal">Skills</h2>
-      <p class="lead reveal">A focused toolkit for agentic systems, ML, and data products.</p>
       <div class="twocol">
         <div class="reveal">
-          <div class="pill">AI & GenAI</div>
-          <ul class="bullets">
-            <li>OpenAI API, LangChain, LangGraph, Groq, Agentic workflows</li>
-            <li>LLM fine‑tuning, prompt engineering</li>
-          </ul>
-          <div class="pill" style="margin-top:12px">Machine Learning</div>
-          <ul class="bullets">
-            <li>scikit‑learn, TensorFlow, NLP, time‑series forecasting</li>
-            <li>Model evaluation & monitoring</li>
-          </ul>
+          <h4>AI & GenAI</h4>
+          <ul class="bullets"><li>LangChain, LangGraph, Groq, LLM Fine-tuning</li></ul>
+          <h4>Machine Learning</h4>
+          <ul class="bullets"><li>scikit-learn, TensorFlow, NLP, Forecasting</li></ul>
         </div>
         <div class="reveal">
-          <div class="pill">Data & Systems</div>
-          <ul class="bullets">
-            <li>Python, SQL, Power BI, Tableau, data pipelines, predictive modeling</li>
-            <li>FastAPI, Docker, Streamlit, Appsmith, Supabase, GCP, REST APIs</li>
-            <li>Git, automation, cloud integration</li>
-          </ul>
+          <h4>Data & Systems</h4>
+          <ul class="bullets"><li>Python, SQL, Power BI, FastAPI, Supabase, GCP, Docker</li></ul>
         </div>
       </div>
     </section>
 
-    <!-- Impact & Values / Leadership / Certifications -->
-    <section id="impact" class="wrap">
-      <div class="twocol">
-        <div class="reveal">
-          <h2 class="section-title">Impact & Values</h2>
-          <p class="lead">Animal welfare volunteer (Chennai): rescue & feeding initiatives, partnering with local groups for healthcare, shelter, and food for stray animals. Advocate for compassionate, sustainable living.</p>
-        </div>
-        <div class="reveal">
-          <h2 class="section-title">Leadership & Certifications</h2>
-          <ul class="bullets">
-            <li><strong>Team Captain — Team Kraftwagen</strong> (ATV design, analysis, manufacturing; 30+ members)</li>
-            <li>Certifications: Machine Learning (Stanford/Coursera), Data Analytics & ML with Python (IBM), Data Analysis with Pandas (Udemy), Project Management Fundamentals (Darden)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="tight">
+    <section id="contact">
       <div class="wrap">
         <h2 class="section-title reveal">Contact</h2>
         <div class="contact-info reveal">
-          <p>Phone: <a class="link" href="tel:+919372488260">+91‑937‑248‑8260</a></p>
-          <p>Email: <a class="link" href="mailto:dssurania@gmail.com">dssurania@gmail.com</a></p>
-          <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/deepanshu-s-7b53a1110" target="_blank" rel="noreferrer">linkedin.com/in/deepanshu-s-7b53a1110</a></p>
+          <p>📞 <a href="tel:+919372488260">+91-937-248-8260</a></p>
+          <p>📧 <a href="mailto:dssurania@gmail.com">dssurania@gmail.com</a></p>
+          <p>🔗 <a href="https://www.linkedin.com/in/deepanshu-s-7b53a1110" target="_blank" rel="noreferrer">linkedin.com/in/deepanshu-s-7b53a1110</a></p>
         </div>
       </div>
     </section>
@@ -327,52 +207,27 @@
   </footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth active state on nav links during scroll
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const navLinks = [...document.querySelectorAll('.links a')];
-    const setActive = () => {
-      const y = window.scrollY + 90;
-      let current = sections[0].id;
-      for (const s of sections){ if (y >= s.offsetTop) current = s.id; }
-      navLinks.forEach(a => a.classList.toggle('primary', a.getAttribute('href') === '#' + current));
-    };
-    window.addEventListener('scroll', setActive, { passive: true });
-    setActive();
+    // Reveal-on-scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Reveal-on-scroll with IntersectionObserver (staggered)
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target); // reveal once
+    // Demo launcher
+    document.querySelectorAll('.open-demo').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = btn.closest('article.card');
+        const url = card?.getAttribute('data-demo');
+        if (url && url !== '#') {
+          window.open(url, '_blank', 'noopener');
+        } else {
+          alert('Add your Streamlit app URL to the card\\'s data-demo attribute to enable the live demo button.');
         }
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i % 6) * 50 + 'ms'; // small stagger per row
-      io.observe(el);
     });
-
-    // Card expand/collapse with animated height via CSS grid trick
-    document.querySelectorAll('.card').forEach((card) => {
-      card.addEventListener('click', () => card.classList.toggle('active'));
-      card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-expanded', 'false');
-      card.addEventListener('click', () => card.setAttribute('aria-expanded', card.classList.contains('active')));
-    });
-
-    // Light parallax on hero blobs
-    const blobs = document.querySelectorAll('.blob, .blob2');
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10;
-      const y = (e.clientY / window.innerHeight - 0.5) * 10;
-      blobs.forEach((b, i) => b.style.transform = `translate(${x*(i? -1:1)}px, ${y*(i? -1:1)}px)`);
-    }, { passive: true });
   </script>
 </body>
 </html>
